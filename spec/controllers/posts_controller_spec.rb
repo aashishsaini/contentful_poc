@@ -14,5 +14,11 @@ describe PostsController do
       get :show, params: { id: @posts.first.id }
       expect(response).to be_successful
     end
+
+    it 'will redirect to root_url if unable to fetch the post with provided id' do
+      get :show, params: { id: 'abc' }
+      expect(response).should redirect_to '/'
+      expect(response).not_to be_successful
+    end
   end
 end
