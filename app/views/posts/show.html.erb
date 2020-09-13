@@ -1,0 +1,32 @@
+<div class="album text-muted">
+  <div class="container" style="margin-left: 30%">
+    <div class="card">
+      <h2>
+        <%= @post.title %>
+      </h2>
+      <br/>
+      <%= image_tag(@post.photo.url) %>
+      <p>
+        <%= label_tag :tags, 'Tags:' %>
+        <ul class="unordered-list">
+          <% @post.tags.each do |tag| %>
+           <li class="list-items"> <%= tag.name %></li>
+          <% end %>
+        </ul>
+      </p>
+      <p>
+        <%= label_tag :content, 'Content:' %>
+        <%= parse_content(@post.content).html_safe %>
+      </p>
+      <% if @post.fields.keys.include?(:author) %>
+        <p>
+          <%= label_tag :author, 'Author:' %>
+          <%= @post.author.name %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= link_to 'Return to Home', root_url %>
+  </div>
+</div>

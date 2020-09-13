@@ -1,0 +1,13 @@
+<h1 class="text-center">Listing Posts</h1>
+<div class="album text-muted">
+  <div class="container">
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="card">
+          <%= image_tag(post.photo.url) %>
+          <p class="card-text"><%= link_to post.title, post_path(post.id) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
